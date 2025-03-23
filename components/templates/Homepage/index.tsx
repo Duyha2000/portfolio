@@ -31,7 +31,7 @@ const Home: NextPageWithLayout = () => {
               data-aos-easing='ease-out-cubic'
               data-aos-duration='2000'
             >
-              I&apos;m a Front-end Developer
+              I&apos;m a ...
             </p>
             <div className='icons'>
               <Link href='https://www.facebook.com/tranduy0209/'>
