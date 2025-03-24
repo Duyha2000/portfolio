@@ -22,7 +22,7 @@ const Navigation: React.FC = () => {
       </div>
       <ul className='nav-items'>
         <li className='nav-item'>
-          <Link href='homepage' className='active-class'>
+          <Link href='/' className='active-class'>
             Home
           </Link>
         </li>
