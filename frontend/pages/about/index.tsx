@@ -5,7 +5,6 @@ import AboutPage from '../../components/templates/About'
 type Props = HttpResponse<null>
 
 const Page: NextPageWithLayout<Props> = () => <AboutPage />
-// Xin chao
 Page.getLayout = EmptyLayout
 
 export const getServerSideProps = async () => {

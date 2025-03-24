@@ -1,115 +1,18 @@
-import FacebookIcon from '@mui/icons-material/Facebook'
-import GitHubIcon from '@mui/icons-material/GitHub'
-import LinkedInIcon from '@mui/icons-material/LinkedIn'
-import Link from 'next/link'
-import styled from 'styled-components'
-import Meta from '../components/meta'
-import { MainLayout } from '../components/styles/Layouts'
-import Particle from '../components/atoms/Particle'
-import { NextPageWithLayout } from '../components/models/common'
-import MainContent from '../components/atoms/MainContent'
+import { EmptyLayout } from '../components/layout/Empty'
+import { HttpResponse } from '../components/lib/api'
+import { NextPageWithLayout } from '../components/lib/types'
 
-const Home: NextPageWithLayout = () => {
-  return (
-    <>
-      <Meta title='Home Page' />
-      <MainLayout padding='0'>
-        <HomePageStyled>
-          <div className='particle-con'>
-            <Particle />
-          </div>
-          <div className='typography'>
-            <h1
-              data-aos='zoom-out-left'
-              data-aos-easing='ease-out-cubic'
-              data-aos-duration='2000'
-            >
-              Hi, I&apos;m <span>Duy Tran</span>
-            </h1>
-            <p
-              data-aos='zoom-out-left'
-              data-aos-easing='ease-out-cubic'
-              data-aos-duration='2000'
-            >
-              I&apos;m a ...
-            </p>
-            <div className='icons'>
-              <Link href='https://www.facebook.com/ducktieu'>
-                <a className='icon i-facebook'>
-                  <FacebookIcon />
-                </a>
-              </Link>
+import { HomePage } from '../components/templates/Homepage'
 
-              <Link href='https://github.com/Duyha2000'>
-                <a className='icon i-github'>
-                  <GitHubIcon />
-                </a>
-              </Link>
+type Props = HttpResponse<null>
 
-              <Link href='www.linkedin.com/in/duy-tran0209'>
-                <a className='icon i-linkedin'>
-                  <LinkedInIcon />
-                </a>
-              </Link>
-            </div>
-          </div>
-          <MainContent />
-        </HomePageStyled>
-      </MainLayout>
-    </>
-  )
+const Home: NextPageWithLayout<Props> = () => <HomePage />
+Home.getLayout = EmptyLayout
+
+export const getServerSideProps = async () => {
+  return {
+    props: {},
+  }
 }
 
-const HomePageStyled = styled.header`
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  z-index: 1;
-  .typography {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 80%;
-
-    .icons {
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-      .icon {
-        border: 2px solid var(--border-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        transition: all 0.4s ease-in-out;
-        cursor: pointer;
-        &:hover {
-          border: 2px solid var(--primary-color);
-          color: var(--primary-color);
-        }
-        &:not(:last-child) {
-          margin-right: 1rem;
-        }
-        svg {
-          margin: 0.5rem;
-        }
-      }
-
-      .i-youtube {
-        &:hover {
-          border: 2px solid red;
-          color: red;
-        }
-      }
-      .i-github {
-        &:hover {
-          border: 2px solid #5f4687;
-          color: #5f4687;
-        }
-      }
-    }
-  }
-`
 export default Home

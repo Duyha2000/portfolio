@@ -1,15 +1,41 @@
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import Link from 'next/link'
+import styled from 'styled-components'
+
+// Icon
 import FacebookIcon from '@mui/icons-material/Facebook'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
-import Link from 'next/link'
-import styled from 'styled-components'
-import MainContent from '../../atoms/MainContent'
-import Particle from '../../atoms/Particle'
+
+// Layout & Component
 import Meta from '../../meta'
-import { NextPageWithLayout } from '../../models/common'
+import Particle from '../../atoms/Particle'
+import MainContent from '../../atoms/MainContent'
 import { MainLayout } from '../../styles/Layouts'
 
-const Home: NextPageWithLayout = () => {
+// Kiểu dữ liệu
+import { NextPageWithLayout } from '../../models/common'
+import { ProfileData } from './type.ts'
+
+export const HomePage: NextPageWithLayout = () => {
+  const [profile, setProfile] = useState<ProfileData | null>(null)
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await axios.get<ProfileData>(
+          'http://localhost:5000/api/profile'
+        )
+        setProfile(response.data)
+      } catch (error) {
+        console.error('Error fetching profile:', error)
+      }
+    }
+
+    fetchProfile()
+  }, [])
+
   return (
     <>
       <Meta title='Home Page' />
@@ -19,34 +45,25 @@ const Home: NextPageWithLayout = () => {
             <Particle />
           </div>
           <div className='typography'>
-            <h1
-              data-aos='zoom-out-left'
-              data-aos-easing='ease-out-cubic'
-              data-aos-duration='2000'
-            >
-              Hi, I&apos;m <span>Duy Tran</span>
+            <h1>
+              Hi, I&apos;m <span>{profile?.name || '...'}</span>
             </h1>
-            <p
-              data-aos='zoom-out-left'
-              data-aos-easing='ease-out-cubic'
-              data-aos-duration='2000'
-            >
-              I&apos;m a ...
-            </p>
+            <p>{profile?.title || 'Loading title...'}</p>
+
             <div className='icons'>
-              <Link href='https://www.facebook.com/tranduy0209/'>
+              <Link href={profile?.socials.facebook || '#'}>
                 <a className='icon i-facebook'>
                   <FacebookIcon />
                 </a>
               </Link>
 
-              <Link href='https://github.com/duytran0209'>
+              <Link href={profile?.socials.github || '#'}>
                 <a className='icon i-github'>
                   <GitHubIcon />
                 </a>
               </Link>
 
-              <Link href='https://www.linkedin.com/in/duytran0209/'>
+              <Link href={profile?.socials.linkedin || '#'}>
                 <a className='icon i-linkedin'>
                   <LinkedInIcon />
                 </a>
@@ -112,4 +129,3 @@ const HomePageStyled = styled.header`
     }
   }
 `
-export default Home
