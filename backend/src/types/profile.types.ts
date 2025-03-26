@@ -14,4 +14,6 @@ export interface ProfileData {
   title: string;
   socials: SocialLinks;
   avatar: string;
+  phone: string;
+  email: string;
 }

@@ -52,19 +52,19 @@ export const HomePage: NextPageWithLayout = () => {
 
             <div className='icons'>
               <Link href={profile?.socials.facebook || '#'}>
-                <a className='icon i-facebook'>
+                <a className='icon i-facebook' target='_blank'>
                   <FacebookIcon />
                 </a>
               </Link>
 
               <Link href={profile?.socials.github || '#'}>
-                <a className='icon i-github'>
+                <a className='icon i-github' target='_blank'>
                   <GitHubIcon />
                 </a>
               </Link>
 
               <Link href={profile?.socials.linkedin || '#'}>
-                <a className='icon i-linkedin'>
+                <a className='icon i-linkedin' target='_blank'>
                   <LinkedInIcon />
                 </a>
               </Link>

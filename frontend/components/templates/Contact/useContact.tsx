@@ -1,14 +1,13 @@
 import { useFormik } from 'formik'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import axios from 'axios'
 import { validationSchema } from './schema'
 
 const initialValues = {
   email: '',
   name: '',
   phone: '',
-  password: '',
-  confirmedPassword: '',
   message: '',
 }
 
@@ -16,21 +15,23 @@ export const useContact = () => {
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: () => {
-      toast.info('Thank you! I will contact you soon', {
-        position: toast.POSITION.TOP_CENTER,
-      })
-    },
-    onReset() {
-      toast.info('Thank you! I will contact you soon', {
-        position: toast.POSITION.TOP_CENTER,
-      })
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const res = await axios.post(
+          'http://localhost:5000/api/send-email',
+          values
+        )
+        toast.success(res.data.message, {
+          position: toast.POSITION.TOP_CENTER,
+        })
+        resetForm()
+      } catch (err: any) {
+        toast.error(err?.response?.data?.message || 'Gửi email thất bại!', {
+          position: toast.POSITION.TOP_CENTER,
+        })
+      }
     },
   })
 
-  return [
-    {
-      formik,
-    },
-  ] as const
+  return [{ formik }] as const
 }

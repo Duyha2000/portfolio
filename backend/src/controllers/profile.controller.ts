@@ -16,5 +16,8 @@ export const getProfile = (req: Request, res: Response<ProfileData>) => {
       linkedin: "https://linkedin.com/in/duy-tran0209",
     },
     avatar: "/images/png/AvatarCV.jpeg",
+    phone: "+84-812291537",
+    email: "tranduy10a@gmail.com",
+    //
   });
 };
