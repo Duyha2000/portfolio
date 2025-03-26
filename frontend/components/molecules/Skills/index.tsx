@@ -1,10 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { InnerLayout } from '../../styles/Layouts'
 import Title from '../../atoms/Title'
 import ProgressBar from '../../atoms/ProgressBar'
 
+type SkillItem = {
+  title: string
+  width: string
+  text: string
+}
+
 function Skills() {
+  const [skills, setSkills] = useState<SkillItem[]>([])
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/skills')
+      .then((res) => res.json())
+      .then((data: SkillItem[]) => {
+        setSkills(data)
+      })
+      .catch((err) => {
+        console.error('Failed to load skills:', err)
+      })
+  }, [])
+
   return (
     <SkillsStyled>
       <Title title={'My Skills'} span={'my skills'} />
@@ -15,15 +34,14 @@ function Skills() {
           data-aos-easing='ease-out-cubic'
           data-aos-duration='2000'
         >
-          <ProgressBar title={'HTML'} width={'85%'} text={'85%'} />
-
-          <ProgressBar title={'CSS3'} width={'90%'} text={'90%'} />
-
-          <ProgressBar title={'Javascript'} width={'60%'} text={'60%'} />
-
-          <ProgressBar title={'React JS'} width={'80%'} text={'80%'} />
-
-          <ProgressBar title={'NextJS'} width={'75%'} text={'75%'} />
+          {skills.map((skill, idx) => (
+            <ProgressBar
+              key={idx}
+              title={skill.title}
+              width={skill.width}
+              text={skill.text}
+            />
+          ))}
         </div>
       </InnerLayout>
     </SkillsStyled>

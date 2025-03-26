@@ -1,9 +1,13 @@
 import { Request, Response } from "express";
-import { Activity } from "../types/activities.types";
 
-export const getActivities = (req: Request, res: Response<Activity[]>) => {
+export const getActivities = (_req: Request, res: Response) => {
   res.json([
-    "Participating in a research project at the Economics Faculty",
-    "...",
+    {
+      text: "Participated in a university-level scientific research project on Emotional Intelligence and Psychological Well-being.",
+    },
+
+    {
+      text: "Conducted weekly coding sessions with local high school students to promote early exposure to computer science.",
+    },
   ]);
 };

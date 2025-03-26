@@ -14,7 +14,7 @@ const PrimaryButton: React.FC<Props> = ({
   return (
     <a
       target='_blank'
-      href='https://drive.google.com/file/d/171rSj_C1gzAaJIO8m7jCZCCq3KM55wIB/view?usp=sharing
+      href='https://drive.google.com/file/d/1QABnPXm2eK1jA32wdCnETileeeOWqvLB/view?usp=sharing
 '
       rel='noopener noreferrer'
     >

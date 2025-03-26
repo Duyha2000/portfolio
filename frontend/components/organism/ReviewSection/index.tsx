@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { InnerLayout } from '../../styles/Layouts'
 import ReviewItem from '../../molecules/ReviewItem'
 import Title from '../../atoms/Title'
 
+type Activity = {
+  text: string
+}
+
 const ReviewSection = () => {
+  const [activities, setActivities] = useState<Activity[]>([])
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/activities')
+      .then((res) => res.json())
+      .then((data) => setActivities(data))
+      .catch((err) => console.error('Failed to load activities:', err))
+  }, [])
+
   return (
     <ReviewsStyled
       data-aos='fade-up'
@@ -14,13 +27,9 @@ const ReviewSection = () => {
       <Title title={'ACTIVITIES'} span={'ACTIVITIES'} />
       <InnerLayout>
         <div className='reviews'>
-          <ReviewItem
-            text={
-              'Participating in a research project at the Economics Falcuty  '
-            }
-          />
-
-          <ReviewItem text={'...'} />
+          {activities.map((activity, index) => (
+            <ReviewItem key={index} text={activity.text} />
+          ))}
         </div>
       </InnerLayout>
     </ReviewsStyled>

@@ -1,10 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import resume from '../../images/png/AvatarCV.jpeg'
 import PrimaryButton from '../../atoms/Button'
 import Image from 'next/image'
 
-function ImageSection() {
+type ProfileInfo = {
+  name: string
+  age: number
+  nationality: string
+  languages: string[]
+  location: string
+  service: string
+  title: string
+}
+
+const ImageSection = () => {
+  const [profile, setProfile] = useState<ProfileInfo | null>(null)
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/profile')
+      .then((res) => res.json())
+      .then((data: ProfileInfo) => setProfile(data))
+      .catch((err) => console.error('Failed to load profile info:', err))
+  }, [])
+
+  if (!profile) {
+    return <p>Loading profile...</p>
+  }
+
   return (
     <ImageSectionStyled>
       <div
@@ -30,14 +53,13 @@ function ImageSection() {
         data-aos-duration='2000'
       >
         <h4>
-          I&apos;m <span>... </span>
+          My name is <span>{profile.name}</span>
         </h4>
 
-        <div className='paragraph'>I am a ...</div>
+        <div className='paragraph'>I am a {profile.title}.</div>
 
         <div className='about-info'>
           <div className='info-title'>
-            <p>Full Name</p>
             <p>Age</p>
             <p>Nationality</p>
             <p>Languages</p>
@@ -46,16 +68,14 @@ function ImageSection() {
           </div>
 
           <div className='info'>
-            <p>: Tran Duc Duy </p>
-
-            <p> : 24</p>
-            <p>: Viet Nam</p>
-            <p> : English, Vietnamese</p>
-            <p>: VietNam</p>
-            <p>: Developer</p>
+            <p>: {profile.age}</p>
+            <p>: {profile.nationality}</p>
+            <p>: {profile.languages.join(', ')}</p>
+            <p>: {profile.location}</p>
+            <p>: {profile.service}</p>
           </div>
         </div>
-        <PrimaryButton title={'Download CV'}></PrimaryButton>
+        <PrimaryButton title={'Download CV'} />
       </div>
     </ImageSectionStyled>
   )
@@ -104,4 +124,5 @@ const ImageSectionStyled = styled.div`
     }
   }
 `
+
 export default ImageSection

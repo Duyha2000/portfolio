@@ -1,38 +1,11 @@
 import { Request, Response } from "express";
-import { SkillGroup } from "../types/skills.types";
 
-export const getSkills = (req: Request, res: Response<SkillGroup[]>) => {
+export const getSkills = (_req: Request, res: Response) => {
   res.json([
-    {
-      title: "Programming Languages",
-      items: ["JavaScript", "TypeScript"],
-    },
-    {
-      title: "Frameworks/Platforms",
-      items: [
-        "NextJS",
-        "ReactJS",
-        "Redux",
-        "Redux Toolkit",
-        "Bootstrap",
-        "Material UI",
-        "SCSS",
-        "jQuery",
-      ],
-    },
-    {
-      title: "Other Skills",
-      items: [
-        "Github",
-        "Vercel",
-        "VSCode",
-        "Figma",
-        "Jira",
-        "Trello",
-        "Firebase",
-        "PSD to HTML",
-        "Office Skills",
-      ],
-    },
+    { title: "HTML", width: "85%", text: "85%" },
+    { title: "CSS3", width: "90%", text: "90%" },
+    { title: "JavaScript", width: "60%", text: "60%" },
+    { title: "React JS", width: "80%", text: "80%" },
+    { title: "NextJS", width: "75%", text: "75%" },
   ]);
 };

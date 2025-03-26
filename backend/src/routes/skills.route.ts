@@ -1,5 +1,8 @@
-import express from "express";
+import { Router } from "express";
 import { getSkills } from "../controllers/skills.controller";
-const router = express.Router();
+
+const router = Router();
+
 router.get("/", getSkills);
+
 export default router;
