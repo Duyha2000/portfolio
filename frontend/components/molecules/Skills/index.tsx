@@ -14,7 +14,7 @@ function Skills() {
   const [skills, setSkills] = useState<SkillItem[]>([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/skills')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/skills`)
       .then((res) => res.json())
       .then((data: SkillItem[]) => {
         setSkills(data)

@@ -18,7 +18,7 @@ const ImageSection = () => {
   const [profile, setProfile] = useState<ProfileInfo | null>(null)
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/profile')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`)
       .then((res) => res.json())
       .then((data: ProfileInfo) => setProfile(data))
       .catch((err) => console.error('Failed to load profile info:', err))

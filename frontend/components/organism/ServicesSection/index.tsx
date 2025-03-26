@@ -23,7 +23,7 @@ const ServicesSection = () => {
   const [skills, setSkills] = useState<SkillCard[]>([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/skills-tech')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/skills-tech`)
       .then((res) => res.json())
       .then((data) => setSkills(data))
       .catch((err) => console.error('Failed to load technical skills:', err))

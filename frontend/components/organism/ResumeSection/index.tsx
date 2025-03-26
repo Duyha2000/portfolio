@@ -28,7 +28,7 @@ function ResumeSection() {
   const [resumeData, setResumeData] = useState<ResumeData | null>(null)
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/resume')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/resume`)
       .then((res) => res.json())
       .then((data: ResumeData) => {
         setResumeData(data)

@@ -12,7 +12,7 @@ const ReviewSection = () => {
   const [activities, setActivities] = useState<Activity[]>([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/activities')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/activities`)
       .then((res) => res.json())
       .then((data) => setActivities(data))
       .catch((err) => console.error('Failed to load activities:', err))

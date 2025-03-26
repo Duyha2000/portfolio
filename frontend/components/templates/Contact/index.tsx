@@ -26,7 +26,7 @@ function ContactPage() {
   const { formik } = values
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/profile')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`)
       .then((res) => res.json())
       .then((data) => {
         const { phone, email, location } = data
