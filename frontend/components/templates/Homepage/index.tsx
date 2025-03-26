@@ -16,7 +16,7 @@ import { MainLayout } from '../../styles/Layouts'
 
 // Kiểu dữ liệu
 import { NextPageWithLayout } from '../../models/common'
-import { ProfileData } from './type.ts'
+import { ProfileData } from './type'
 
 export const HomePage: NextPageWithLayout = () => {
   const [profile, setProfile] = useState<ProfileData | null>(null)

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import styled from 'styled-components'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import MailIcon from '@mui/icons-material/Mail'
