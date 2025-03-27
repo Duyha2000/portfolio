@@ -1,8 +1,8 @@
-import React from 'react';
-import Head from 'next/head';
+import React from 'react'
+import Head from 'next/head'
 
 interface MetaProps {
-  title: string;
+  title: string
 }
 
 const Meta: React.FC<MetaProps> = ({ title }) => {
@@ -11,18 +11,18 @@ const Meta: React.FC<MetaProps> = ({ title }) => {
       <title>{title}</title>
       <meta
         name='description'
-        content='Welcome to my profile, I am a front end web developer'
+        content='Welcome to my profile, I am a web developer'
       />
       <meta property='og:title' content='My Portfolio' />
       <meta
         property='og:description'
-        content='Welcome to my profile, I am a front end web developer'
+        content='Welcome to my profile, I am a web developer'
       />
       <meta property='og:url' content='https://tranduy020900dev.vercel/' />
       <meta property='og:type' content='website' />
       <link rel='icon' href='/favicon.ico' />
     </Head>
-  );
-};
+  )
+}
 
-export default Meta;
+export default Meta

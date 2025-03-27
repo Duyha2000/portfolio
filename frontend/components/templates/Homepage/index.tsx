@@ -1,41 +1,24 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+// /components/templates/Homepage/index.tsx
+import { FC } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 
-// Icon
 import FacebookIcon from '@mui/icons-material/Facebook'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
-// Layout & Component
 import Meta from '../../meta'
 import Particle from '../../atoms/Particle'
 import MainContent from '../../atoms/MainContent'
 import { MainLayout } from '../../styles/Layouts'
-
-// Kiểu dữ liệu
 import { NextPageWithLayout } from '../../models/common'
 import { ProfileData } from './type'
 
-export const HomePage: NextPageWithLayout = () => {
-  const [profile, setProfile] = useState<ProfileData | null>(null)
+type HomePageProps = {
+  profile: ProfileData | null
+}
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await axios.get<ProfileData>(
-          'http://localhost:5000/api/profile'
-        )
-        setProfile(response.data)
-      } catch (error) {
-        console.error('Error fetching profile:', error)
-      }
-    }
-
-    fetchProfile()
-  }, [])
-
+export const HomePage: FC<HomePageProps> = ({ profile }) => {
   return (
     <>
       <Meta title='Home Page' />
@@ -52,19 +35,19 @@ export const HomePage: NextPageWithLayout = () => {
 
             <div className='icons'>
               <Link href={profile?.socials.facebook || '#'}>
-                <a className='icon i-facebook' target='_blank'>
+                <a className='icon i-facebook' target='_blank' rel='noreferrer'>
                   <FacebookIcon />
                 </a>
               </Link>
 
               <Link href={profile?.socials.github || '#'}>
-                <a className='icon i-github' target='_blank'>
+                <a className='icon i-github' target='_blank' rel='noreferrer'>
                   <GitHubIcon />
                 </a>
               </Link>
 
               <Link href={profile?.socials.linkedin || '#'}>
-                <a className='icon i-linkedin' target='_blank'>
+                <a className='icon i-linkedin' target='_blank' rel='noreferrer'>
                   <LinkedInIcon />
                 </a>
               </Link>
@@ -82,6 +65,7 @@ const HomePageStyled = styled.header`
   height: 100vh;
   position: relative;
   z-index: 1;
+
   .typography {
     position: absolute;
     top: 50%;
@@ -94,6 +78,7 @@ const HomePageStyled = styled.header`
       display: flex;
       justify-content: center;
       margin-top: 1rem;
+
       .icon {
         border: 2px solid var(--border-color);
         display: flex;
@@ -102,24 +87,21 @@ const HomePageStyled = styled.header`
         border-radius: 50%;
         transition: all 0.4s ease-in-out;
         cursor: pointer;
+
         &:hover {
           border: 2px solid var(--primary-color);
           color: var(--primary-color);
         }
+
         &:not(:last-child) {
           margin-right: 1rem;
         }
+
         svg {
           margin: 0.5rem;
         }
       }
 
-      .i-youtube {
-        &:hover {
-          border: 2px solid red;
-          color: red;
-        }
-      }
       .i-github {
         &:hover {
           border: 2px solid #5f4687;

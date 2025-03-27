@@ -7,20 +7,6 @@ import ResumeItem from '../../molecules/ResumeItem'
 import SmallTitle from '../../atoms/SmallTitle'
 import Title from '../../atoms/Title'
 
-type ResumeDataItem = {
-  year: string
-  title: string
-  subTitle: string
-  text: string
-}
-
-type ResumeData = {
-  education: ResumeDataItem[]
-  experience: ResumeDataItem[]
-  certificates: ResumeDataItem[]
-  projects: ResumeDataItem[]
-}
-
 function ResumeSection() {
   const briefcase = <BusinessCenterIcon />
   const school = <SchoolIcon />

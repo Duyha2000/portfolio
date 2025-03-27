@@ -20,6 +20,8 @@
     "@mui/styled-engine": "^5.10.3",
     "@mui/styled-engine-sc": "^5.10.3",
     "@reduxjs/toolkit": "^1.8.5",
+    "@tanstack/react-query": "^5.69.0",
+    "@tanstack/react-query-devtools": "^5.69.0",
     "antd": "^4.22.8",
     "aos": "^3.0.0-beta.6",
     "axios": "^0.27.2",
