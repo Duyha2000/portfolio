@@ -34,6 +34,7 @@ function ResumeSection() {
         <div className='small-title '>
           <SmallTitle icon={briefcase} title={'Educational Qualifications'} />
         </div>
+
         <div className='resume-content' data-aos='zoom-out-left'>
           {resumeData.education.map((item, idx) => (
             <ResumeItem key={idx} {...item} />
@@ -48,16 +49,24 @@ function ResumeSection() {
             {resumeData.experience.map((item, idx) => (
               <ResumeItem key={idx} {...item} />
             ))}
+          </div>
+        </div>
+
+        <div className='small-title u-small-title-margin'>
+          <div className='mb-16'>
             <SmallTitle icon={briefcase} title={'Certificates'} />
+          </div>
+          <div className='resume-content' data-aos='zoom-out-left'>
             {resumeData.certificates.map((item, idx) => (
               <ResumeItem key={idx} {...item} />
             ))}
           </div>
         </div>
 
-        <div className='small-title '>
+        <div className='small-title u-small-title-margin'>
           <SmallTitle icon={briefcase} title={'Projects'} />
         </div>
+
         <div className='resume-content' data-aos='zoom-out-left'>
           {resumeData.projects.map((item, idx) => (
             <ResumeItem key={idx} {...item} />
@@ -69,6 +78,8 @@ function ResumeSection() {
 }
 
 const ResumeStyled = styled.section`
+  padding-left: 1rem;
+  padding-right: 1rem;
   .small-title {
     padding-bottom: 3rem;
   }

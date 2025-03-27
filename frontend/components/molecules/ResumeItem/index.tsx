@@ -1,29 +1,30 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 interface Props {
-  year: string;
-  title: string;
-  subTitle: string;
-  text: string;
+  year: string
+  title: string
+  subTitle: string
+  text: string
 }
 
 const ResumeItem: React.FC<Props> = ({ year, title, subTitle, text }) => {
   return (
     <ResumeItemStyled>
-      <div className="left-content">
+      <div className='left-content'>
         <p>{year}</p>
       </div>
-      <div className="right-content">
+      <div className='right-content'>
         <h5>{title}</h5>
         <h6>{subTitle}</h6>
         <p>{text}</p>
       </div>
     </ResumeItemStyled>
-  );
-};
+  )
+}
 
 const ResumeItemStyled = styled.div`
   display: flex;
+
   @media screen and (max-width: 421px) {
     p,
     h5,
@@ -35,10 +36,11 @@ const ResumeItemStyled = styled.div`
     padding-bottom: 3rem;
   }
   .left-content {
+    width: 10%;
     padding-left: 30px;
     position: relative;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       left: -10px;
       top: 5px;
@@ -54,10 +56,11 @@ const ResumeItemStyled = styled.div`
     }
   }
   .right-content {
+    width: 90%;
     padding-left: 5rem;
     position: relative;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       top: 15px;
@@ -75,5 +78,5 @@ const ResumeItemStyled = styled.div`
       font-size: 1.5rem;
     }
   }
-`;
-export default ResumeItem;
+`
+export default ResumeItem

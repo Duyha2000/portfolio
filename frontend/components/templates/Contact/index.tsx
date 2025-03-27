@@ -136,18 +136,27 @@ const ContactPageStyled = styled.section`
   .contact-section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 2rem;
+    gap: 2rem;
     @media screen and (max-width: 978px) {
       grid-template-columns: repeat(1, 1fr);
       .f-button {
         margin-bottom: 3rem;
       }
     }
-    .right-content {
-      margin-left: 2rem;
-      display: grid;
-      grid-template-columns: 1fr;
+    .left-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-right: 2rem;
     }
+
+    .right-content {
+      display: flex;
+      flex-direction: column;
+      margin-right: 2rem;
+      gap: 1rem;
+    }
+
     .contact-title {
       h4 {
         color: var(--white-color);

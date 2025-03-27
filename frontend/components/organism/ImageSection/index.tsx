@@ -16,7 +16,8 @@ const ImageSection = () => {
     queryKey: ['profile'],
     queryFn: fetchProfile,
   })
-  if (isLoading) return <p>Loading profile?...</p>
+
+  if (isLoading) return <p>Loading profile...</p>
 
   return (
     <ImageSectionStyled>
@@ -38,22 +39,23 @@ const ImageSection = () => {
         <div className='paragraph'>I am a {profile?.title}.</div>
 
         <div className='about-info'>
-          <div className='info-title'>
-            <p>Age</p>
-            <p>Nationality</p>
-            <p>Languages</p>
-            <p>Location</p>
-            <p>Service</p>
+          <div className='info-item'>
+            <strong>Age:</strong> {profile?.age}
           </div>
-
-          <div className='info'>
-            <p>: {profile?.age}</p>
-            <p>: {profile?.nationality}</p>
-            <p>: {profile?.languages.join(', ')}</p>
-            <p>: {profile?.location}</p>
-            <p>: {profile?.service}</p>
+          <div className='info-item'>
+            <strong>Nationality:</strong> {profile?.nationality}
+          </div>
+          <div className='info-item'>
+            <strong>Languages:</strong> {profile?.languages.join(', ')}
+          </div>
+          <div className='info-item'>
+            <strong>Location:</strong> {profile?.location}
+          </div>
+          <div className='info-item'>
+            <strong>Service:</strong> {profile?.service}
           </div>
         </div>
+
         <PrimaryButton title={'Download CV'} />
       </div>
     </ImageSectionStyled>
@@ -64,15 +66,18 @@ const ImageSectionStyled = styled.div`
   margin-top: 5rem;
   display: flex;
   gap: 0 4rem;
+
   @media screen and (max-width: 1000px) {
     flex-direction: column;
     .left-content {
       margin-bottom: 2rem;
     }
   }
+
   .left-content {
     width: 100%;
   }
+
   .right-content {
     width: 100%;
     h4 {
@@ -82,22 +87,21 @@ const ImageSectionStyled = styled.div`
         font-size: 2rem;
       }
     }
+
     .paragraph {
       padding: 1rem 0;
     }
+
     .about-info {
-      display: flex;
       padding-bottom: 1.4rem;
-      .info-title {
-        padding-right: 3rem;
-        p {
-          font-weight: 600;
-        }
-      }
-      .info-title,
-      .info {
-        p {
-          padding: 0.3rem 0;
+      .info-item {
+        padding: 0.5rem 0;
+        font-size: 1.2rem;
+        display: flex;
+        gap: 1rem;
+        strong {
+          font-weight: bold;
+          color: var(--primary-color);
         }
       }
     }

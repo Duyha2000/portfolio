@@ -19,28 +19,33 @@ const ReviewSection = () => {
   }, [])
 
   return (
-    <ReviewsStyled
-      data-aos='fade-up'
-      data-aos-easing='ease-out-cubic'
-      data-aos-duration='2000'
-    >
-      <Title title={'ACTIVITIES'} span={'ACTIVITIES'} />
-      <InnerLayout>
+    <InnerLayout>
+      <ReviewsStyled
+        data-aos='fade-up'
+        data-aos-easing='ease-out-cubic'
+        data-aos-duration='2000'
+      >
+        <Title title={'ACTIVITIES'} span={'ACTIVITIES'} />
         <div className='reviews'>
           {activities.map((activity, index) => (
             <ReviewItem key={index} text={activity.text} />
           ))}
         </div>
-      </InnerLayout>
-    </ReviewsStyled>
+      </ReviewsStyled>
+    </InnerLayout>
   )
 }
 
 const ReviewsStyled = styled.section`
   .reviews {
+    margin-top: 5rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 1rem;
+    @media screen and (max-width: 1000px) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
   }
 `
 
