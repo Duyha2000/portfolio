@@ -6,6 +6,7 @@ import { InnerLayout } from '../../styles/Layouts'
 import ResumeItem from '../../molecules/ResumeItem'
 import SmallTitle from '../../atoms/SmallTitle'
 import Title from '../../atoms/Title'
+import { ResumeData } from './type'
 
 function ResumeSection() {
   const briefcase = <BusinessCenterIcon />

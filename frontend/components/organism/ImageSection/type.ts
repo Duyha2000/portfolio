@@ -1,4 +1,4 @@
-type ProfileInfo = {
+export type ProfileInfo = {
   name: string
   age: number
   nationality: string

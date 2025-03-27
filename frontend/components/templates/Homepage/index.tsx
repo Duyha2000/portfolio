@@ -11,7 +11,6 @@ import Meta from '../../meta'
 import Particle from '../../atoms/Particle'
 import MainContent from '../../atoms/MainContent'
 import { MainLayout } from '../../styles/Layouts'
-import { NextPageWithLayout } from '../../models/common'
 import { ProfileData } from './type'
 
 type HomePageProps = {

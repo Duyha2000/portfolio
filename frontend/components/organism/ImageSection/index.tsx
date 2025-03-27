@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import PrimaryButton from '../../atoms/Button'
 import resume from '../../images/png/AvatarCV.jpeg'
+import { ProfileInfo } from './type'
 
 const fetchProfile = async (): Promise<ProfileInfo> => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`)
