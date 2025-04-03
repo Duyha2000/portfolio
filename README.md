@@ -32,22 +32,19 @@ This is a fullstack personal portfolio project that showcases my resume, skills,
 | ├── `src/server.ts`     | Server entry point                             |
 | ├── `.env`              | Env vars (PORT, EMAIL_USER, EMAIL_PASS)        |
 | └── `package.json`      | Backend dependencies and scripts               |
-
-| `frontend/` | Next.js frontend (resume website) |
-| ├── `pages/` | Page routes (Home, Resume, Contact, etc.) |
-| ├── `components/` | Shared UI components (atoms, molecules, layout) |
-| ├── `templates/` | Page content logic (e.g., Resume, Contact) |
-| ├── `styles/` | Global styles and layout configs |
-| ├── `public/` | Static assets (images, favicon, etc.) |
-| ├── `lib/` | API handlers and shared types |
-| ├── `meta/` | SEO and meta tag configuration |
-| ├── `.env.local` | API base URL for frontend |
-| └── `package.json` | Frontend dependencies and scripts |
-
-| Root Files   |                                       |
-| ------------ | ------------------------------------- |
-| `README.md`  | Project overview and instructions     |
-| `.gitignore` | Ignore node_modules, env, .next, etc. |
+| `frontend/`             | Next.js frontend (resume website)              |
+| ├── `pages/`            | Page routes (Home, Resume, Contact, etc.)      |
+| ├── `components/`       | Shared UI components (atoms, molecules, layout)|
+| ├── `templates/`        | Page content logic (e.g., Resume, Contact)     |
+| ├── `styles/`           | Global styles and layout configs               |
+| ├── `public/`           | Static assets (images, favicon, etc.)          |
+| ├── `lib/`              | API handlers and shared types                  |
+| ├── `meta/`             | SEO and meta tag configuration                 |
+| ├── `.env.local`        | API base URL for frontend                      |
+| └── `package.json`      | Frontend dependencies and scripts              |
+| Root Files              |                                                |
+| `README.md`             | Project overview and instructions              |
+| `.gitignore`            | Ignore node_modules, env, .next, etc.          |
 
 ---
 
